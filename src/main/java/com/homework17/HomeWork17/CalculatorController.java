@@ -7,39 +7,43 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/calculator")
-public class Controller {
-    private final Service service;
+public class CalculatorController {
+    private final CalculatorService calculatorService;
 
-    public Controller(Service service) {
-        this.service = service;
+    public CalculatorController(CalculatorService calculatorService) {
+        this.calculatorService = calculatorService;
     }
 
     @GetMapping
     public String hello() {
-        return service.hello();
+        return calculatorService.hello();
     }
 
     @GetMapping(path = "/plus")
     public String plus(@RequestParam("num1") int num1,
                        @RequestParam("num2") int num2) {
-        return service.plus(num1, num2);
+        return "Ответ: " + num1 + " + " + num2 + " = " + calculatorService.plus(num1, num2);
     }
 
     @GetMapping(path = "/minus")
     public String minus(@RequestParam("num1") int num1,
                         @RequestParam("num2") int num2) {
-        return service.minus(num1, num2);
+        return "Ответ: " + num1 + " - " + num2 + " = " + calculatorService.minus(num1, num2);
     }
 
     @GetMapping(path = "/multiply")
     public String multiply(@RequestParam("num1") int num1,
                            @RequestParam("num2") int num2) {
-        return service.multiply(num1, num2);
+        return "Ответ: " + num1 + " * " + num2 + " = " + calculatorService.multiply(num1, num2);
     }
 
     @GetMapping(path = "/divide")
     public String divide(@RequestParam("num1") int num1,
                          @RequestParam("num2") int num2) {
-        return service.divide(num1, num2);
+        if (num2 == 0) {
+            return "Деление на 0 невозможно, измените второе число";
+        } else {
+            return "Ответ: " + num1 + " * " + num2 + " = " + calculatorService.divide(num1, num2);
+        }
     }
 }
