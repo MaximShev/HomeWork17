@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static com.homework17.HomeWork17.CalculatorConstant.*;
 
 class CalculatorServiceParameterizedTest {
 
@@ -15,14 +14,11 @@ class CalculatorServiceParameterizedTest {
 
     private static Stream<Arguments> provideParams() {
         return Stream.of(
-                Arguments.of(a, b),
-                Arguments.of(a, c),
-                Arguments.of(a, d),
-                Arguments.of(a, e),
-                Arguments.of(a, f),
-                Arguments.of(a, g),
-                Arguments.of(f, f),
-                Arguments.of(d, d)
+                Arguments.of(4, 5),
+                Arguments.of(6, 7),
+                Arguments.of(1, 2),
+                Arguments.of(3, 4),
+                Arguments.of(8, 9)
         );
     }
 
@@ -46,7 +42,7 @@ class CalculatorServiceParameterizedTest {
 
     @ParameterizedTest
     @MethodSource("provideParams")
-    void divide(int num1, int num2) {
+    void divide(double num1, double num2) {
         assertEquals(num1 / num2, service.divide(num1, num2));
     }
 
