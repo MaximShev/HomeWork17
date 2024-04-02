@@ -1,5 +1,6 @@
-package com.homework17.HomeWork17;
+package com.homework17.HomeWork17.Conroller;
 
+import com.homework17.HomeWork17.Service.CalculatorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +41,6 @@ public class CalculatorController {
     @GetMapping(path = "/divide")
     public String divide(@RequestParam("num1") int num1,
                          @RequestParam("num2") int num2) {
-        if (num2 == 0) {
-            return "Деление на 0 невозможно, измените второе число";
-        } else {
-            return "Ответ: " + num1 + " * " + num2 + " = " + calculatorService.divide(num1, num2);
-        }
+        return "Ответ: " + num1 + " * " + num2 + " = " + calculatorService.divide(num1, num2);
     }
 }

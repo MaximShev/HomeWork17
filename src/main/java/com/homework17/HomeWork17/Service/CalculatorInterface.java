@@ -1,4 +1,4 @@
-package com.homework17.HomeWork17;
+package com.homework17.HomeWork17.Service;
 
 public interface CalculatorInterface {
     String hello();
